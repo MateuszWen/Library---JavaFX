@@ -4,14 +4,13 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 
@@ -41,6 +40,22 @@ public class AddDeleteReader implements Initializable {
 
     @FXML public void buttonAddClicked(ActionEvent event) {
         Functions.addReader(textFieldName.getText(), textFieldSurname.getText(), readers_list);
+    }
+
+    @FXML public void buttonDeleteClicked(){
+        Readers reader = tableReaders.getSelectionModel().getSelectedItem();
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Attention!");
+        alert.setHeaderText("You just want to delete the Reader.");
+        alert.setContentText("Are you sure?");
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){
+            tableReaders.getItems().remove(reader);
+            Functions.deleteReader(reader);
+        } else {
+            //do nothink
+        }
 
     }
 }

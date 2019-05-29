@@ -68,10 +68,18 @@ public class Controller  {
 
         Stage primaryStage = new Stage();
         AnchorPane root = FXMLLoader.load(getClass().getResource("/fxml/AddReader.fxml"));
-        primaryStage.setTitle("Add Reader");
+        primaryStage.setTitle("Add or Delete Reader");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
 
+    }
+
+    @FXML public void buttonAddDeleteBookClicked() throws IOException{
+        Stage primaryStage = new Stage();
+        AnchorPane root = FXMLLoader.load(getClass().getResource("/fxml/AddDeleteBookFXML.fxml"));
+        primaryStage.setTitle("Add or Delete Book");
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
     }
 
 }

@@ -21,6 +21,6 @@
           <TableColumn fx:id="col_surname" prefWidth="156.0" sortable="false" text="Surname:" />
         </columns>
       </TableView>
-      <Button fx:id="buttonDelete" layoutX="508.0" layoutY="158.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="80.0" text="Delete" />
+      <Button fx:id="buttonDelete" layoutX="508.0" layoutY="158.0" mnemonicParsing="false" onAction="#buttonDeleteClicked" prefHeight="46.0" prefWidth="80.0" text="Delete" />
    </children>
 </AnchorPane>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="551.0" prefWidth="630.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.library.AddDeleteBook">
+   <children>
+      <TextField fx:id="textFieldTitle" layoutX="67.0" layoutY="102.0" />
+      <TextField fx:id="textFieldAuthor" layoutX="281.0" layoutY="102.0" />
+      <Button fx:id="buttonAdd" layoutX="518.0" layoutY="79.0" mnemonicParsing="false" onAction="#buttonAddClicked" prefHeight="46.0" prefWidth="80.0" text="Add" />
+      <Label layoutX="128.0" layoutY="69.0" text="Title:" />
+      <Label layoutX="331.0" layoutY="69.0" text="Author:" />
+      <TableView fx:id="tableBooks" layoutX="31.0" layoutY="168.0" prefHeight="375.0" prefWidth="431.0">
+         <columns>
+            <TableColumn fx:id="col_booksID" prefWidth="84.0" text="Book ID:" />
+            <TableColumn fx:id="col_title" prefWidth="120.0" text="Title:" />
+            <TableColumn fx:id="col_author" prefWidth="141.0" sortable="false" text="Author:" />
+            <TableColumn fx:id="col_borrowedOrNot" prefWidth="75.0" text="State:" />
+         </columns>
+      </TableView>
+      <Button fx:id="buttonDelete" layoutX="518.0" layoutY="168.0" mnemonicParsing="false" onAction="#buttonDeleteClicked" prefHeight="46.0" prefWidth="80.0" text="Delete" />
+   </children>
+</AnchorPane>
