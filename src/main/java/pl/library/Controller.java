@@ -1,5 +1,6 @@
 package pl.library;
 
+import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -21,7 +22,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Controller c {
+public class Controller  {
 
     @FXML
     private Button buttonAddDeleteReader;
@@ -35,11 +36,6 @@ public class Controller c {
 
     //public static ObservableList<Readers> list = (ObservableList<Readers>) FXCollections.observableList(new Readers("Anna", "Grodzka"));
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources){
-
-
-    }
 
     @FXML public void buttonAddDeleteReaderClicked(ActionEvent actionEvent) throws IOException {
 
@@ -75,9 +71,6 @@ public class Controller c {
         primaryStage.setTitle("Add Reader");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
-
-
-
 
     }
 

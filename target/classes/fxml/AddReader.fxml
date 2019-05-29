@@ -2,15 +2,25 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane prefHeight="551.0" prefWidth="630.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.library.AddDeleteReader">
    <children>
-      <TextField layoutX="57.0" layoutY="92.0" />
-      <TextField layoutX="271.0" layoutY="92.0" />
-      <Button layoutX="508.0" layoutY="69.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="80.0" text="Add" />
+      <TextField fx:id="textFieldName" layoutX="57.0" layoutY="92.0" />
+      <TextField fx:id="textFieldSurname" layoutX="271.0" layoutY="92.0" />
+      <Button fx:id="buttonAdd" layoutX="508.0" layoutY="69.0" mnemonicParsing="false" onAction="#buttonAddClicked" prefHeight="46.0" prefWidth="80.0" text="Add" />
       <Label layoutX="118.0" layoutY="59.0" text="Name:" />
       <Label layoutX="321.0" layoutY="59.0" text="Surname:" />
+      <TableView fx:id="tableReaders" layoutX="53.0" layoutY="158.0" prefHeight="375.0" prefWidth="399.0">
+        <columns>
+            <TableColumn fx:id="col_readersID" prefWidth="84.0" text="Reader ID:" />
+          <TableColumn fx:id="col_name" prefWidth="147.0" text="Name:" />
+          <TableColumn fx:id="col_surname" prefWidth="156.0" sortable="false" text="Surname:" />
+        </columns>
+      </TableView>
+      <Button fx:id="buttonDelete" layoutX="508.0" layoutY="158.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="80.0" text="Delete" />
    </children>
 </AnchorPane>
