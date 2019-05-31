@@ -11,7 +11,7 @@ import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-
+/**Control class to deleting and adding a reader function */
 public class AddDeleteReader implements Initializable {
 
         @FXML private TextField textFieldName;
@@ -23,7 +23,7 @@ public class AddDeleteReader implements Initializable {
         @FXML private TableColumn<Readers, String> col_name;
         @FXML private TableColumn<Readers, String> col_surname;
 
-
+        /**This readers_list contain all readers to display on TableView, all records from DB, are saveing there */
         public static ObservableList<Readers> readers_list = Functions.getReadersFunction();
 
 
@@ -41,15 +41,15 @@ public class AddDeleteReader implements Initializable {
     }
 
     @FXML public void buttonDeleteClicked(){
-        Readers reader = tableReaders.getSelectionModel().getSelectedItem();
+        Readers reader = tableReaders.getSelectionModel().getSelectedItem(); //<-- contain a selected reader to remove
 
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION); //<-- display an alert before removing a reader
         alert.setTitle("Attention!");
         alert.setHeaderText("You just want to delete the Reader.");
         alert.setContentText("Are you sure?");
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK){
-            tableReaders.getItems().remove(reader);
+            tableReaders.getItems().remove(reader);  //<-- remove reader from tableview
             Functions.deleteReader(reader);
         } else {
             //do nothink

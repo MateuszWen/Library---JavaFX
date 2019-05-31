@@ -4,15 +4,14 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
-import java.util.Optional;
 import java.util.ResourceBundle;
 
+/**Control class to Borrow a book function */
 public class BorrowABook implements Initializable {
 
     @FXML private TableView<Readers> tableReaders;
@@ -26,9 +25,10 @@ public class BorrowABook implements Initializable {
     @FXML private TableColumn<Books, String> col_author;
     @FXML private TableColumn<Books, Integer> col_borrowedOrNot;
 
+    /**This loans_list contain all loans to display on TableView, all records from DB, are saveing there */
     public static ObservableList<Loans> loans_list = Functions.getLoansFunction();
 
-
+    /**There are two TableViews for all not borrowed books and all readers*/
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         col_readersID.setCellValueFactory(new PropertyValueFactory<Readers, Integer>("readers_ID"));
@@ -49,12 +49,12 @@ public class BorrowABook implements Initializable {
         Readers reader = tableReaders.getSelectionModel().getSelectedItem();
 
         if(book.getBorrowedOrNot() == 1 ){
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION); //<-- if user would to borrow borrowed book, this alert will appear
             alert.setTitle("Information Dialog");
             alert.setHeaderText(null);
             alert.setContentText("You can't borrow borrowed book.");
             alert.showAndWait();
-        } else if(tableBooks.getSelectionModel().getSelectedItem()!=null && tableReaders.getSelectionModel().getSelectedItem()!=null){
+        } else if(tableBooks.getSelectionModel().getSelectedItem()!=null && tableReaders.getSelectionModel().getSelectedItem()!=null){  //<-- this clause will work if user choose one line from both TableViews
             Functions.borrowABook(reader, book, loans_list);
         }else{
             //do nothink

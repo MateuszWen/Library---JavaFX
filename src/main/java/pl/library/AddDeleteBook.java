@@ -10,6 +10,7 @@ import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+/**Control class to deleting and adding a book function */
 public class AddDeleteBook implements Initializable {
 
     @FXML private TextField textFieldTitle;
@@ -22,7 +23,7 @@ public class AddDeleteBook implements Initializable {
     @FXML private TableColumn<Books, String> col_author;
     @FXML private TableColumn<Books, Integer> col_borrowedOrNot;
 
-
+    /**This book_list contain all books to display on TableView, all records from DB, are saveing there */
     public static ObservableList<Books> books_list = Functions.getBooksFunction();
 
 
@@ -41,14 +42,15 @@ public class AddDeleteBook implements Initializable {
 
     }
     @FXML public void buttonDeleteClicked(){
-        Books book = tableBooks.getSelectionModel().getSelectedItem();
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        Books book = tableBooks.getSelectionModel().getSelectedItem();  //<-- contain a selected reader to remove
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION); //<-- display an alert before removing a book
         alert.setTitle("Attention!");
         alert.setHeaderText("You just want to delete the book.");
         alert.setContentText("Are you sure?");
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK){
-            tableBooks.getItems().remove(book);
+            tableBooks.getItems().remove(book);  //<-- remove book from tableview
             Functions.deleteBook(book);
         } else {
             //do nothink
