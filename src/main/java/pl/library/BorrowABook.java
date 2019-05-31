@@ -48,14 +48,16 @@ public class BorrowABook implements Initializable {
         Books book = tableBooks.getSelectionModel().getSelectedItem();
         Readers reader = tableReaders.getSelectionModel().getSelectedItem();
 
-        if(book.getBorrowedOrNot() == 1){
+        if(book.getBorrowedOrNot() == 1 ){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information Dialog");
             alert.setHeaderText(null);
             alert.setContentText("You can't borrow borrowed book.");
             alert.showAndWait();
-        } else{
+        } else if(tableBooks.getSelectionModel().getSelectedItem()!=null && tableReaders.getSelectionModel().getSelectedItem()!=null){
             Functions.borrowABook(reader, book, loans_list);
+        }else{
+            //do nothink
         }
 
 

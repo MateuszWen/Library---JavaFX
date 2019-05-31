@@ -7,9 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
 import java.util.Optional;
 import java.util.ResourceBundle;
 

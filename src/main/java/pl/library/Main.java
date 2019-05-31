@@ -25,13 +25,10 @@ public class Main extends Application{
 //        primaryStage.setScene(scene);
 //        primaryStage.setTitle("Library");
 //        primaryStage.show();
-
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/Main.fxml"));
         primaryStage.setTitle("Library");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
-
-
 
     }
 

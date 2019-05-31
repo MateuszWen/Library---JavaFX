@@ -22,7 +22,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Controller  {
+public class MainController  {
 
     @FXML
     private Button buttonAddDeleteReader;
@@ -89,6 +89,7 @@ public class Controller  {
     }
 
     @FXML public void buttonReturnABookClicked() throws IOException{
+        ReturnABook.outOfLibrary_list = Functions.getOutOfLibrary();
         Stage primaryStage = new Stage();
         AnchorPane root = FXMLLoader.load(getClass().getResource("/fxml/ReturnABookFXML.fxml"));
         primaryStage.setTitle("Return A Book");

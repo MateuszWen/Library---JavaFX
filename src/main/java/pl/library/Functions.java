@@ -159,7 +159,6 @@ public class Functions {
 
     }
 
-
     public static ObservableList<Books> getOutOfLibrary() {
 
         ObservableList<Books> list_outOfLibrarybooks = FXCollections.observableArrayList();
@@ -177,7 +176,6 @@ public class Functions {
         }
         return list_outOfLibrarybooks;
     }
-
 
     public static void showReaderInTableNextTo(Books book, ObservableList<Readers> selectedBookReader_list) {
         Loans currentlySelectedLoan = null;
@@ -197,6 +195,23 @@ public class Functions {
                 }
             }
         }catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void returnABook(Books book, ObservableList<Books> outOfLibrary_list) {
+
+        try (Connection c = DriverManager.getConnection("jdbc:sqlite:Library_db.db")) {
+            try (Statement p = c.createStatement()) {
+                p.executeUpdate(" DELETE FROM Loans WHERE book_ID = " + book.getBooks_ID() + " ");
+
+            }
+            try (Statement p = c.createStatement()) {
+                p.executeUpdate(" UPDATE Books SET borrowedOrNot = 0 WHERE books_ID = "+ book.getBooks_ID() +" ");
+            }
+            ReturnABook.outOfLibrary_list = Functions.getOutOfLibrary();
+            AddDeleteBook.books_list = Functions.getBooksFunction();
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }

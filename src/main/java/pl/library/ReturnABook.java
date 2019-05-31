@@ -44,12 +44,18 @@ public class ReturnABook implements Initializable {
     }
 
     @FXML public void mouseRowClicked(javafx.scene.input.MouseEvent mouseEvent) {
-        Books book = tableBooks.getSelectionModel().getSelectedItem();
-        Functions.showReaderInTableNextTo(book, selectedBookReader_list);
+        if(tableBooks.getSelectionModel().getSelectedItem() != null) {
+            Books book = tableBooks.getSelectionModel().getSelectedItem();
+            Functions.showReaderInTableNextTo(book, selectedBookReader_list);
+        }
     }
 
-
     @FXML public void buttonReturnClicked(){
+        if(tableBooks.getSelectionModel().getSelectedItem() != null) {
+            Books book = tableBooks.getSelectionModel().getSelectedItem();
+            Functions.returnABook(book, outOfLibrary_list);
+            tableBooks.getItems().remove(book);
+        }
 
     }
 
