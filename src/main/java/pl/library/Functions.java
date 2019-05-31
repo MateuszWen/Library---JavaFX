@@ -3,7 +3,10 @@ package pl.library;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import javax.swing.plaf.nimbus.State;
 import java.sql.*;
+
+import static java.sql.Types.NULL;
 
 public class Functions {
 
@@ -110,6 +113,92 @@ public class Functions {
             e.printStackTrace();
         }
 
+    }
+
+    public static ObservableList<Loans> getLoansFunction() {
+
+        ObservableList<Loans> list_loans = FXCollections.observableArrayList();
+
+        try (Connection c = DriverManager.getConnection("jdbc:sqlite:Library_db.db")) {
+            try (Statement stm = c.createStatement()) {
+                ResultSet rs = stm.executeQuery("SELECT * FROM Loans");
+                while (rs.next()) {
+                    list_loans.add(new Loans(rs.getInt("loans_ID"), rs.getInt("reader_ID"), rs.getInt("book_ID")));
+                }
+                //c.close();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list_loans;
+    }
+
+    public static void borrowABook(Readers reader, Books book, ObservableList<Loans> list) {/////////////////////////////////////////////////////////////////////////////
+
+        String sqlOrder = "INSERT INTO Loans (reader_ID, book_ID) VALUES(' " + reader.getReaders_ID() + " ',  ' " + book.getBooks_ID() +" ' ) ";
+        String sqlUpdate = "UPDATE Books SET borrowedOrNot = 1 WHERE books_ID = " + book.getBooks_ID() + " ";
+
+        try (Connection c = DriverManager.getConnection("jdbc:sqlite:Library_db.db")) {
+            try(Statement p = c.createStatement()){
+                p.executeUpdate(sqlOrder);
+                p.executeUpdate(sqlUpdate);
+                //c.close();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        if(list.size() == NULL){
+            list.add(new Loans(1, reader.getReaders_ID(), book.getBooks_ID()));
+            book.setBorrowedOrNot(1); //change to inform about borrowing in book_list
+        }else{
+            int lastLoanID = list.get(list.size()-1).getLoans_ID();
+            list.add(new Loans(lastLoanID + 1, reader.getReaders_ID(), book.getBooks_ID()));
+            book.setBorrowedOrNot(1); //change to inform about borrowing in book_list
+        }
+
+    }
+
+
+    public static ObservableList<Books> getOutOfLibrary() {
+
+        ObservableList<Books> list_outOfLibrarybooks = FXCollections.observableArrayList();
+
+        try (Connection c = DriverManager.getConnection("jdbc:sqlite:Library_db.db")) {
+            try (Statement stm = c.createStatement()) {
+                ResultSet rs = stm.executeQuery("SELECT * FROM Books WHERE borrowedOrNot = 1");
+                while (rs.next()) {
+                    list_outOfLibrarybooks.add(new Books(rs.getInt("books_ID"), rs.getString("title"), rs.getString("author"), rs.getInt("borrowedOrNot")));
+                }
+                //c.close();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list_outOfLibrarybooks;
+    }
+
+
+    public static void showReaderInTableNextTo(Books book, ObservableList<Readers> selectedBookReader_list) {
+        Loans currentlySelectedLoan = null;
+        selectedBookReader_list.clear(); // <<-- to clearing selectedBookReader_list
+
+        try(Connection c = DriverManager.getConnection("jdbc:sqlite:Library_db.db")){
+            try(Statement stm = c.createStatement()){
+                ResultSet rs = stm.executeQuery(" SELECT * FROM Loans WHERE book_ID = " + book.getBooks_ID() +" ");
+                while (rs.next()) {
+                    currentlySelectedLoan = new Loans(rs.getInt("loans_ID"), rs.getInt("reader_ID"), rs.getInt("book_ID"));
+                }
+            }
+            try(Statement stm = c.createStatement()){
+                ResultSet rs = stm.executeQuery(" SELECT * FROM Readers WHERE readers_ID = " + currentlySelectedLoan.getReader_ID() +" ");
+                while (rs.next()) {
+                    selectedBookReader_list.add(new Readers(rs.getInt("readers_ID"), rs.getString("name"), rs.getString("surname")));
+                }
+            }
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
 

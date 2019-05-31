@@ -38,7 +38,6 @@ public class Controller  {
 
 
     @FXML public void buttonAddDeleteReaderClicked(ActionEvent actionEvent) throws IOException {
-
 //        Parent root = FXMLLoader.load(getClass().getResource("/fxml/AddReader.fxml"));
 //        Stage stage = new Stage();
 //        stage.setTitle("Add Reader");
@@ -65,7 +64,6 @@ public class Controller  {
 //        catch (IOException e) {
 //            e.printStackTrace();
 //        }
-
         Stage primaryStage = new Stage();
         AnchorPane root = FXMLLoader.load(getClass().getResource("/fxml/AddReader.fxml"));
         primaryStage.setTitle("Add or Delete Reader");
@@ -78,6 +76,22 @@ public class Controller  {
         Stage primaryStage = new Stage();
         AnchorPane root = FXMLLoader.load(getClass().getResource("/fxml/AddDeleteBookFXML.fxml"));
         primaryStage.setTitle("Add or Delete Book");
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
+    }
+
+    @FXML public void buttonBorrowABookClicked() throws IOException{
+        Stage primaryStage = new Stage();
+        AnchorPane root = FXMLLoader.load(getClass().getResource("/fxml/BorrowABookFXML.fxml"));
+        primaryStage.setTitle("Borrow A Book");
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
+    }
+
+    @FXML public void buttonReturnABookClicked() throws IOException{
+        Stage primaryStage = new Stage();
+        AnchorPane root = FXMLLoader.load(getClass().getResource("/fxml/ReturnABookFXML.fxml"));
+        primaryStage.setTitle("Return A Book");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }
