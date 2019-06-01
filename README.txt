@@ -1,11 +1,11 @@
-This is Library program to service a simple library. 
+This is a program to service a simple library. 
 It was created by Mateusz Wenerski as a recruitment task. 
 
-In this application you can add/remove readers and books, borrow and retake books also. 
+In this application you can add/remove readers and books or borrow/retake books. 
 
-Application use a simple database stores the necessary data for the functioning of the program.
+This application uses a simple database, which storage necessary data for program.
 
-If you want to use my program, that's enought to clone it from GitHub and run by, for instance IntelliJ.
+If you want to use my program, you need to clone it from GitHub and run, for instance by IntelliJ.
 
 
 User manual:
@@ -13,29 +13,30 @@ User manual:
 There are 4 buttons on the main panel:
 
 Add/delete reader - allows you to add and remove readers, 
-	add - type name and surname in TextBoxs and click "Add" to insert new reader to table
-	remove - click by mouse on reader in TableView and click "Delete" to remove 
+	add - type name and surname in TextBoxes and click "Add" to insert a new reader to a table;
+	remove - click by a mouse on a reader in a TableView and then click "Delete" to remove.
 	
 Add/delete book - allows you to add and remove books,
-	add - type title and author of book and then click on "Add" to confirm
-	remove - click by mouse on book in TableView and click "Delete" to remove
+	add - type a title and an author of a book and then click "Add" to confirm;
+	remove - click by a mouse on a book in a TableView and then click "Delete" to remove.
 
-	Important! "Status" in book table inform user that book is in library or not.
-	0 - in library
-	1 - beyond of library
+	Important! "Status" in a book table informs user that a book is in a library or not.
+	0 - in a library
+	1 - beyond of a library
 	
-Borrow a book - allows you to borrow books for readers
-	To borrow a book, you need to click interested book and then click on a reader, 
-	when you have signed one item from each table, click on "Borrow" button to borrow a book
+Borrow a book - allows you to borrow books for readers.
+	To borrow a book, you need to click on a book and then click on a reader.
+	When you have signed one item from each table, click on "Borrow".
 	
-Return a book - allows you to return books 
-	To return a book just select interested you position and click "Retake" to return a book
+Return a book - allows you to return books.
+	To return a book, you should select position and click "Retake" to return a book.
 	
 	
 	
 	
 Thank you for your attention.
 
-Greetings,
+
+Best regards,
 
 Mateusz Wenerski

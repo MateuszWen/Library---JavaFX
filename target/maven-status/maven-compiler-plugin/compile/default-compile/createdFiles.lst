@@ -1,0 +1,10 @@
+pl\library\BorrowABook.class
+pl\library\Readers.class
+pl\library\Loans.class
+pl\library\AddDeleteReader.class
+pl\library\Functions.class
+pl\library\ReturnABook.class
+pl\library\Main.class
+pl\library\Books.class
+pl\library\AddDeleteBook.class
+pl\library\MainController.class

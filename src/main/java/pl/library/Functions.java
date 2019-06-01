@@ -7,6 +7,7 @@ import java.sql.*;
 
 import static java.sql.Types.NULL;
 
+/**All functions to service a program*/
 public class Functions {
 
     /**Download all readers from DB*/

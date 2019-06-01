@@ -16,10 +16,10 @@
       <Label layoutX="331.0" layoutY="69.0" text="Author:" />
       <TableView fx:id="tableBooks" layoutX="31.0" layoutY="168.0" prefHeight="375.0" prefWidth="431.0">
          <columns>
-            <TableColumn fx:id="col_booksID" prefWidth="84.0" text="Book ID:" />
-            <TableColumn fx:id="col_title" prefWidth="120.0" text="Title:" />
-            <TableColumn fx:id="col_author" prefWidth="141.0" sortable="false" text="Author:" />
-            <TableColumn fx:id="col_borrowedOrNot" prefWidth="75.0" text="Status:" />
+            <TableColumn fx:id="col_booksID" prefWidth="60.0" text="Book ID:" />
+            <TableColumn fx:id="col_title" prefWidth="164.0" text="Title:" />
+            <TableColumn fx:id="col_author" prefWidth="139.0" sortable="false" text="Author:" />
+            <TableColumn fx:id="col_borrowedOrNot" prefWidth="57.0" text="Status:" />
          </columns>
       </TableView>
       <Button fx:id="buttonDelete" layoutX="518.0" layoutY="168.0" mnemonicParsing="false" onAction="#buttonDeleteClicked" prefHeight="46.0" prefWidth="80.0" text="Delete" />
