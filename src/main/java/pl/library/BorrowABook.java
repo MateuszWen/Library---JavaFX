@@ -26,7 +26,8 @@ public class BorrowABook implements Initializable {
     @FXML private TableColumn<Books, Integer> col_borrowedOrNot;
 
     /**This loans_list contain all loans to display on TableView, all records from DB, are saveing there */
-    public static ObservableList<Loans> loans_list = Functions.getLoansFunction();
+        public static ObservableList<Loans> loans_list = Functions.getLoansFunction();
+
 
     /**There are two TableViews for all not borrowed books and all readers*/
     @Override

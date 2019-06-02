@@ -38,7 +38,16 @@ public class AddDeleteBook implements Initializable {
     }
 
     @FXML public void buttonAddClicked(){
-        Functions.addBook(textFieldTitle.getText(), textFieldAuthor.getText(), books_list);
+        if(textFieldTitle.getText().isEmpty() != true && textFieldAuthor.getText().isEmpty() != true) {
+            Functions.addBook(textFieldTitle.getText(), textFieldAuthor.getText(), books_list);
+        }
+        else{
+            Alert alert = new Alert(Alert.AlertType.INFORMATION); //<-- if user would to add empty title or author
+            alert.setTitle("Information Dialog");
+            alert.setHeaderText(null);
+            alert.setContentText("Type title and author.");
+            alert.showAndWait();
+        }
 
     }
     @FXML public void buttonDeleteClicked(){

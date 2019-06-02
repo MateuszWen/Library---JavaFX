@@ -23,6 +23,12 @@ public class Books {
         this.author = new SimpleStringProperty(author);
         this.borrowedOrNot = new SimpleIntegerProperty(borrowedOrNot);
     }
+    public Books(Integer books_ID) {
+        this.books_ID = new SimpleIntegerProperty(books_ID);
+        this.title = null;
+        this.author = null;
+        this.borrowedOrNot = null;
+    }
 
     public int getBooks_ID() {
         return books_ID.get();

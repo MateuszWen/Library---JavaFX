@@ -37,7 +37,16 @@ public class AddDeleteReader implements Initializable {
     }
 
     @FXML public void buttonAddClicked(ActionEvent event) {
-        Functions.addReader(textFieldName.getText(), textFieldSurname.getText(), readers_list);
+
+        if(textFieldName.getText().isEmpty() != true && textFieldSurname.getText().isEmpty() != true) {
+            Functions.addReader(textFieldName.getText(), textFieldSurname.getText(), readers_list);        }
+        else{
+            Alert alert = new Alert(Alert.AlertType.INFORMATION); //<-- if user would to add empty name or surname
+            alert.setTitle("Information Dialog");
+            alert.setHeaderText(null);
+            alert.setContentText("Type name and surname.");
+            alert.showAndWait();
+        }
     }
 
     @FXML public void buttonDeleteClicked(){
